@@ -1,0 +1,54 @@
+.card {
+  margin: 1rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #495057;
+  margin-bottom: 1rem;
+}
+
+.p-field {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #495057;
+}
+
+:host ::ng-deep .p-dropdown {
+  width: 100%;
+}
+
+:host ::ng-deep .p-calendar {
+  width: 100%;
+}
+
+.p-mt-3 {
+  margin-top: 1rem;
+}
+
+.p-button {
+  margin-right: 0.5rem;
+}
+
+:host ::ng-deep .p-button.p-button-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+:host ::ng-deep .p-button.p-button-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+:host ::ng-deep .p-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

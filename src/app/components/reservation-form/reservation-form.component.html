@@ -1,0 +1,60 @@
+<div class="card">
+  <h2>{{ isEditMode ? "Editar Reserva" : "Nueva Reserva" }}</h2>
+  <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+    <div class="p-fluid">
+      <div class="p-field">
+        <label for="customerId">Cliente</label>
+        <p-dropdown
+          id="customerId"
+          [options]="customers"
+          formControlName="customerId"
+          optionLabel="name"
+          optionValue="id"
+          placeholder="Seleccione un cliente"
+        ></p-dropdown>
+      </div>
+      <div class="p-field">
+        <label for="serviceId">Servicio</label>
+        <p-dropdown
+          id="serviceId"
+          [options]="services"
+          formControlName="serviceId"
+          optionLabel="name"
+          optionValue="id"
+          placeholder="Seleccione un servicio"
+        ></p-dropdown>
+      </div>
+      <div class="p-field">
+        <label for="date">Fecha</label>
+        <p-calendar
+          id="date"
+          formControlName="date"
+          dateFormat="dd/mm/yy"
+        ></p-calendar>
+      </div>
+      <div class="p-field">
+        <label for="time">Hora</label>
+        <p-calendar
+          id="time"
+          formControlName="time"
+          [timeOnly]="true"
+        ></p-calendar>
+      </div>
+    </div>
+    <div class="p-mt-3">
+      <p-button
+        type="submit"
+        label="Guardar"
+        icon="pi pi-check"
+        [disabled]="!reservationForm.valid"
+      ></p-button>
+      <p-button
+        type="button"
+        label="Cancelar"
+        icon="pi pi-times"
+        styleClass="p-button-secondary p-ml-2"
+        routerLink="/reservations"
+      ></p-button>
+    </div>
+  </form>
+</div>

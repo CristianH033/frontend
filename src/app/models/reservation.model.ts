@@ -3,8 +3,18 @@ import { Service } from './service.model';
 
 export interface Reservation {
   id: number;
-  customer: Customer;
-  service: Service;
+  customer: {
+    id: number;
+    name: string;
+    email: string;
+    phone: string;
+  };
+  service: {
+    id: number;
+    name: string;
+    description: string;
+    capacity: number;
+  };
   reservationTime: string;
   status: string;
 }

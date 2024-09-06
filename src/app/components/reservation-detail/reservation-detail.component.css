@@ -1,0 +1,32 @@
+.card {
+  margin: 1rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #495057;
+  margin-bottom: 1rem;
+}
+
+.p-panel {
+  margin-bottom: 1rem;
+}
+
+.p-grid {
+  margin-bottom: 0.5rem;
+}
+
+.p-col-4 {
+  font-weight: bold;
+}
+
+.p-mt-3 {
+  margin-top: 1rem;
+}
+
+.p-mr-2 {
+  margin-right: 0.5rem;
+}

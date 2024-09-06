@@ -18,17 +18,16 @@ export class AppComponent {
   constructor() {
     this.items = [
       {
-        label: 'Inicio',
+        label: 'Home',
         icon: 'pi pi-fw pi-home',
+        routerLink: '/',
       },
       {
-        label: 'Productos',
-        icon: 'pi pi-fw pi-shopping-cart',
+        label: 'Reservations',
+        icon: 'pi pi-fw pi-home',
+        routerLink: '/reservations',
       },
-      {
-        label: 'Contacto',
-        icon: 'pi pi-fw pi-envelope',
-      },
+      { label: 'Services', icon: 'pi pi-fw pi-info', routerLink: '/services' },
     ];
   }
 }

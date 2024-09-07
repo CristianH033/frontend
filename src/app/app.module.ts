@@ -4,8 +4,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
-import { AppComponent } from './app.component';
 import { ReservationListComponent } from './components/reservation-list/reservation-list.component';
 import { ReservationFormComponent } from './components/reservation-form/reservation-form.component';
 import { ReservationDetailComponent } from './components/reservation-detail/reservation-detail.component';
@@ -13,6 +11,9 @@ import { routes } from './app.routes';
 import { ServiceListComponent } from './components/service-list/service-list.component';
 import { ServiceFormComponent } from './components/service-form/service-form.component';
 import { ServiceDetailComponent } from './components/service-detail/service-detail.component';
+import { CustomerListComponent } from './components/customer-list/customer-list.component';
+import { CustomerFormComponent } from './components/customer-form/customer-form.component';
+import { CustomerDetailComponent } from './components/customer-detail/customer-detail.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,9 @@ import { ServiceDetailComponent } from './components/service-detail/service-deta
     ServiceListComponent,
     ServiceFormComponent,
     ServiceDetailComponent,
+    CustomerListComponent,
+    CustomerFormComponent,
+    CustomerDetailComponent,
   ],
   imports: [
     BrowserModule,

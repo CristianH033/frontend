@@ -33,6 +33,18 @@ export class ReservationListComponent implements OnInit {
     });
   }
 
+  cancelReservation(id: number): void {
+    this.apiService.cancelReservation(id).subscribe({
+      // Reload the reservations
+      next: () => {
+        this.loadReservations();
+      },
+      error: (error) => {
+        console.error('Error al cancelar la reserva', error);
+      },
+    });
+  }
+
   deleteReservation(id: number): void {
     this.apiService.deleteReservation(id).subscribe({
       next: () => {

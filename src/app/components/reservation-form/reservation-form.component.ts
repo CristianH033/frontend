@@ -27,8 +27,7 @@ export class ReservationFormComponent implements OnInit {
     this.reservationForm = this.fb.group({
       customerId: ['', Validators.required],
       serviceId: ['', Validators.required],
-      date: ['', Validators.required],
-      time: ['', Validators.required],
+      dateTime: ['', Validators.required],
     });
   }
 
@@ -79,10 +78,17 @@ export class ReservationFormComponent implements OnInit {
 
   onSubmit(): void {
     if (this.reservationForm.valid) {
-      const reservation: Reservation = this.reservationForm.value;
+      const formData = this.reservationForm.value;
+      const reservationData = {
+        customer_id: formData.customerId,
+        service_id: formData.serviceId,
+        reservation_time: formData.dateTime,
+        status: 'pending',
+      };
+
       if (this.isEditMode && this.reservationId) {
         this.apiService
-          .updateReservation(this.reservationId, reservation)
+          .updateReservation(this.reservationId, reservationData)
           .subscribe(
             () => {
               this.router.navigate(['/reservations']);
@@ -92,7 +98,7 @@ export class ReservationFormComponent implements OnInit {
             }
           );
       } else {
-        this.apiService.createReservation(reservation).subscribe(
+        this.apiService.createReservation(reservationData).subscribe(
           () => {
             this.router.navigate(['/reservations']);
           },

@@ -25,19 +25,13 @@
         ></p-dropdown>
       </div>
       <div class="p-field">
-        <label for="date">Fecha</label>
+        <label for="dateTime">Fecha y Hora</label>
         <p-calendar
-          id="date"
-          formControlName="date"
+          id="dateTime"
+          formControlName="dateTime"
           dateFormat="dd/mm/yy"
-        ></p-calendar>
-      </div>
-      <div class="p-field">
-        <label for="time">Hora</label>
-        <p-calendar
-          id="time"
-          formControlName="time"
-          [timeOnly]="true"
+          [showTime]="true"
+          [showSeconds]="false"
         ></p-calendar>
       </div>
     </div>

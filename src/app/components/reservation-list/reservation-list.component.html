@@ -31,13 +31,13 @@
         <td>
           <p-button
             icon="pi pi-pencil"
-            styleClass="p-button-rounded p-button-success p-mr-2"
+            styleClass="p-button p-button-success p-mr-2"
             [routerLink]="['/reservations/edit', reservation.id]"
           ></p-button>
           <p-button
             icon="pi pi-trash"
-            styleClass="p-button-rounded p-button-danger"
-            (click)="deleteReservation(reservation.id)"
+            styleClass="p-button p-button-danger"
+            (click)="cancelReservation(reservation.id)"
           ></p-button>
         </td>
       </tr>

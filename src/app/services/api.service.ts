@@ -28,7 +28,12 @@ export class ApiService {
     return this.http.get<Reservation>(`${this.apiUrl}/reservations/${id}`);
   }
 
-  createReservation(reservation: Reservation): Observable<Reservation> {
+  createReservation(reservation: {
+    customer_id: number;
+    service_id: number;
+    reservation_time: string;
+    status: string;
+  }): Observable<Reservation> {
     return this.http.post<Reservation>(
       `${this.apiUrl}/reservations`,
       reservation
@@ -37,11 +42,23 @@ export class ApiService {
 
   updateReservation(
     id: number,
-    reservation: Reservation
+    reservation: {
+      customer_id: number;
+      service_id: number;
+      reservation_time: string;
+      status: string;
+    }
   ): Observable<Reservation> {
     return this.http.put<Reservation>(
       `${this.apiUrl}/reservations/${id}`,
       reservation
+    );
+  }
+
+  cancelReservation(id: number): Observable<Reservation> {
+    return this.http.post<Reservation>(
+      `${this.apiUrl}/reservations/${id}/cancel`,
+      {}
     );
   }
 

@@ -1,0 +1,37 @@
+<div class="bg-white shadow-md rounded-lg p-6">
+  <h2 class="text-2xl font-bold mb-4">Detalle del Servicio</h2>
+  <div *ngIf="service; else loading">
+    <div class="mb-6">
+      <h3 class="text-xl font-semibold mb-2">Información del Servicio</h3>
+      <div class="grid grid-cols-2 gap-2">
+        <div class="font-bold">ID:</div>
+        <div>{{ service.id }}</div>
+        <div class="font-bold">Nombre:</div>
+        <div>{{ service.name }}</div>
+        <div class="font-bold">Descripción:</div>
+        <div>{{ service.description }}</div>
+        <div class="font-bold">Capacidad:</div>
+        <div>{{ service.capacity }}</div>
+      </div>
+    </div>
+    <div class="flex space-x-2">
+      <a
+        [routerLink]="['/services/edit', service.id]"
+        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+        >Editar</a
+      >
+      <a
+        routerLink="/services"
+        class="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400"
+        >Volver</a
+      >
+    </div>
+  </div>
+  <ng-template #loading>
+    <div class="flex justify-center">
+      <div
+        class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"
+      ></div>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,47 @@
+<div class="bg-white shadow-md rounded-lg p-6">
+  <h2 class="text-2xl font-bold mb-4">
+    {{ isEditMode ? "Editar Servicio" : "Nuevo Servicio" }}
+  </h2>
+  <form [formGroup]="serviceForm" (ngSubmit)="onSubmit()" class="space-y-4">
+    <div>
+      <label for="name" class="block mb-1">Nombre</label>
+      <input
+        type="text"
+        id="name"
+        formControlName="name"
+        class="w-full p-2 border rounded"
+      />
+    </div>
+    <div>
+      <label for="description" class="block mb-1">Descripción</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        class="w-full p-2 border rounded"
+      ></textarea>
+    </div>
+    <div>
+      <label for="capacity" class="block mb-1">Capacidad</label>
+      <input
+        type="number"
+        id="capacity"
+        formControlName="capacity"
+        class="w-full p-2 border rounded"
+      />
+    </div>
+    <div class="flex space-x-2">
+      <button
+        type="submit"
+        [disabled]="!serviceForm.valid"
+        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:opacity-50"
+      >
+        Guardar
+      </button>
+      <a
+        routerLink="/services"
+        class="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400"
+        >Cancelar</a
+      >
+    </div>
+  </form>
+</div>

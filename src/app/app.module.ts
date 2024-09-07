@@ -10,12 +10,18 @@ import { ReservationListComponent } from './components/reservation-list/reservat
 import { ReservationFormComponent } from './components/reservation-form/reservation-form.component';
 import { ReservationDetailComponent } from './components/reservation-detail/reservation-detail.component';
 import { routes } from './app.routes';
+import { ServiceListComponent } from './components/service-list/service-list.component';
+import { ServiceFormComponent } from './components/service-form/service-form.component';
+import { ServiceDetailComponent } from './components/service-detail/service-detail.component';
 
 @NgModule({
   declarations: [
     ReservationListComponent,
     ReservationFormComponent,
     ReservationDetailComponent,
+    ServiceListComponent,
+    ServiceFormComponent,
+    ServiceDetailComponent,
   ],
   imports: [
     BrowserModule,

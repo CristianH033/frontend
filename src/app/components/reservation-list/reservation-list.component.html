@@ -29,7 +29,7 @@
         <td class="p-2 flex space-x-2">
           <a
             [routerLink]="['/reservations', reservation.id]"
-            class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600"
+            class="bg-gray-200 text-gray-700 px-2 py-1 rounded hover:bg-gray-300"
             >Ver</a
           >
           <a
@@ -37,7 +37,7 @@
             [class.opacity-50]="reservation.status === 'CONFIRMED'"
             [class.cursor-not-allowed]="reservation.status === 'CONFIRMED'"
             [attr.disabled]="reservation.status === 'CONFIRMED' ? true : null"
-            class="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-600"
+            class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600"
             >Editar</a
           >
           <ng-container [ngSwitch]="reservation.status">
@@ -50,18 +50,20 @@
               </button>
             </ng-container>
             <ng-container *ngSwitchCase="'PENDING'">
-              <button
-                (click)="confirmReservation(reservation.id)"
-                class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600"
-              >
-                Confirmar
-              </button>
-              <button
-                (click)="cancelReservation(reservation.id)"
-                class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
-              >
-                Cancelar
-              </button>
+              <div class="inline-flex rounded-md shadow-sm" role="group">
+                <button
+                  (click)="confirmReservation(reservation.id)"
+                  class="bg-green-500 text-white px-2 py-1 rounded-l hover:bg-green-600"
+                >
+                  Confirmar
+                </button>
+                <button
+                  (click)="cancelReservation(reservation.id)"
+                  class="bg-red-500 text-white px-2 py-1 rounded-r hover:bg-red-600"
+                >
+                  Cancelar
+                </button>
+              </div>
             </ng-container>
             <ng-container *ngSwitchCase="'CONFIRMED'">
               <button

@@ -39,6 +39,9 @@ export class ReservationFormComponent implements OnInit {
         this.isEditMode = true;
         this.reservationId = +params['id'];
         this.loadReservation(this.reservationId);
+      } else {
+        this.isEditMode = false;
+        this.reservationForm.reset();
       }
     });
   }
@@ -68,7 +71,11 @@ export class ReservationFormComponent implements OnInit {
   loadReservation(id: number): void {
     this.apiService.getReservation(id).subscribe(
       (reservation) => {
-        this.reservationForm.patchValue(reservation);
+        this.reservationForm.patchValue({
+          customerId: reservation.customer.id,
+          serviceId: reservation.service.id,
+          dateTime: new Date(reservation.reservationTime),
+        });
       },
       (error) => {
         console.error('Error al cargar la reserva', error);

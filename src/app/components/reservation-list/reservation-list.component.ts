@@ -19,23 +19,25 @@ export class ReservationListComponent implements OnInit {
   }
 
   loadReservations(): void {
+    this.loading = true;
     this.error = '';
     this.apiService.getReservations().subscribe({
       next: (data) => {
-        this.reservations = data;
+        // Ordenar las reservas por ID de forma ascendente
+        this.reservations = data.sort((a, b) => a.id - b.id);
         this.loading = false;
       },
       error: (error) => {
         this.error =
           'Error al cargar las reservas. Por favor, intente de nuevo.';
         this.loading = false;
+        console.error('Error al cargar las reservas', error);
       },
     });
   }
 
   cancelReservation(id: number): void {
     this.apiService.cancelReservation(id).subscribe({
-      // Reload the reservations
       next: () => {
         this.loadReservations();
       },

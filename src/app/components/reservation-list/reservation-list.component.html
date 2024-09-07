@@ -34,15 +34,45 @@
           >
           <a
             [routerLink]="['/reservations/edit', reservation.id]"
+            [class.opacity-50]="reservation.status === 'CONFIRMED'"
+            [class.cursor-not-allowed]="reservation.status === 'CONFIRMED'"
+            [attr.disabled]="reservation.status === 'CONFIRMED' ? true : null"
             class="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-600"
             >Editar</a
           >
-          <button
-            (click)="cancelReservation(reservation.id)"
-            class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
-          >
-            Cancelar
-          </button>
+          <ng-container [ngSwitch]="reservation.status">
+            <ng-container *ngSwitchCase="'CANCELLED'">
+              <button
+                (click)="ratifyReservation(reservation.id)"
+                class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600"
+              >
+                Ratificar
+              </button>
+            </ng-container>
+            <ng-container *ngSwitchCase="'PENDING'">
+              <button
+                (click)="confirmReservation(reservation.id)"
+                class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600"
+              >
+                Confirmar
+              </button>
+              <button
+                (click)="cancelReservation(reservation.id)"
+                class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
+              >
+                Cancelar
+              </button>
+            </ng-container>
+            <ng-container *ngSwitchCase="'CONFIRMED'">
+              <button
+                (click)="cancelReservation(reservation.id)"
+                class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 opacity-50 cursor-not-allowed"
+                disabled
+              >
+                Cancelar
+              </button>
+            </ng-container>
+          </ng-container>
         </td>
       </tr>
     </tbody>

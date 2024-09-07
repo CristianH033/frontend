@@ -105,4 +105,13 @@ export class ApiService {
   deleteCustomer(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/customers/${id}`);
   }
+
+  updateReservationStatus(
+    id: number,
+    status: 'PENDING' | 'CONFIRMED' | 'CANCELLED'
+  ): Observable<Reservation> {
+    return this.http.patch<Reservation>(`${this.apiUrl}/reservations/${id}`, {
+      status: status,
+    });
+  }
 }

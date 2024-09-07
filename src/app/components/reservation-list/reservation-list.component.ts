@@ -23,7 +23,6 @@ export class ReservationListComponent implements OnInit {
     this.error = '';
     this.apiService.getReservations().subscribe({
       next: (data) => {
-        // Ordenar las reservas por ID de forma ascendente
         this.reservations = data.sort((a, b) => a.id - b.id);
         this.loading = false;
       },
@@ -37,7 +36,7 @@ export class ReservationListComponent implements OnInit {
   }
 
   cancelReservation(id: number): void {
-    this.apiService.cancelReservation(id).subscribe({
+    this.apiService.updateReservationStatus(id, 'CANCELLED').subscribe({
       next: () => {
         this.loadReservations();
       },
@@ -47,15 +46,24 @@ export class ReservationListComponent implements OnInit {
     });
   }
 
-  deleteReservation(id: number): void {
-    this.apiService.deleteReservation(id).subscribe({
+  confirmReservation(id: number): void {
+    this.apiService.updateReservationStatus(id, 'CONFIRMED').subscribe({
       next: () => {
-        this.reservations = this.reservations.filter(
-          (reservation) => reservation.id !== id
-        );
+        this.loadReservations();
       },
       error: (error) => {
-        console.error('Error al eliminar la reserva', error);
+        console.error('Error al confirmar la reserva', error);
+      },
+    });
+  }
+
+  ratifyReservation(id: number): void {
+    this.apiService.updateReservationStatus(id, 'PENDING').subscribe({
+      next: () => {
+        this.loadReservations();
+      },
+      error: (error) => {
+        console.error('Error al ratificar la reserva', error);
       },
     });
   }

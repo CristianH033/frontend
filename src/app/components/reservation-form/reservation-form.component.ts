@@ -94,7 +94,7 @@ export class ReservationFormComponent implements OnInit {
         customer_id: formData.customerId,
         service_id: formData.serviceId,
         reservation_time: formData.dateTime,
-        status: 'pending',
+        status: 'PENDING',
       };
 
       if (this.isEditMode && this.reservationId) {

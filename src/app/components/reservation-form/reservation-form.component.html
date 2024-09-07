@@ -1,54 +1,56 @@
-<div class="card">
-  <h2>{{ isEditMode ? "Editar Reserva" : "Nueva Reserva" }}</h2>
-  <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
-    <div class="p-fluid">
-      <div class="p-field">
-        <label for="customerId">Cliente</label>
-        <p-dropdown
-          id="customerId"
-          [options]="customers"
-          formControlName="customerId"
-          optionLabel="name"
-          optionValue="id"
-          placeholder="Seleccione un cliente"
-        ></p-dropdown>
-      </div>
-      <div class="p-field">
-        <label for="serviceId">Servicio</label>
-        <p-dropdown
-          id="serviceId"
-          [options]="services"
-          formControlName="serviceId"
-          optionLabel="name"
-          optionValue="id"
-          placeholder="Seleccione un servicio"
-        ></p-dropdown>
-      </div>
-      <div class="p-field">
-        <label for="dateTime">Fecha y Hora</label>
-        <p-calendar
-          id="dateTime"
-          formControlName="dateTime"
-          dateFormat="dd/mm/yy"
-          [showTime]="true"
-          [showSeconds]="false"
-        ></p-calendar>
-      </div>
+<div class="bg-white shadow-md rounded-lg p-6">
+  <h2 class="text-2xl font-bold mb-4">
+    {{ isEditMode ? "Editar Reserva" : "Nueva Reserva" }}
+  </h2>
+  <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()" class="space-y-4">
+    <div>
+      <label for="customerId" class="block mb-1">Cliente</label>
+      <select
+        id="customerId"
+        formControlName="customerId"
+        class="w-full p-2 border rounded"
+      >
+        <option value="">Seleccione un cliente</option>
+        <option *ngFor="let customer of customers" [value]="customer.id">
+          {{ customer.name }}
+        </option>
+      </select>
     </div>
-    <div class="p-mt-3 flex flex-wrap gap-2">
-      <p-button
+    <div>
+      <label for="serviceId" class="block mb-1">Servicio</label>
+      <select
+        id="serviceId"
+        formControlName="serviceId"
+        class="w-full p-2 border rounded"
+      >
+        <option value="">Seleccione un servicio</option>
+        <option *ngFor="let service of services" [value]="service.id">
+          {{ service.name }}
+        </option>
+      </select>
+    </div>
+    <div>
+      <label for="dateTime" class="block mb-1">Fecha y Hora</label>
+      <input
+        type="datetime-local"
+        id="dateTime"
+        formControlName="dateTime"
+        class="w-full p-2 border rounded"
+      />
+    </div>
+    <div class="flex space-x-2">
+      <button
         type="submit"
-        label="Guardar"
-        icon="pi pi-check"
         [disabled]="!reservationForm.valid"
-      ></p-button>
-      <p-button
-        type="button"
-        label="Cancelar"
-        icon="pi pi-times"
-        styleClass="p-button-secondary p-ml-2"
+        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:opacity-50"
+      >
+        Guardar
+      </button>
+      <a
         routerLink="/reservations"
-      ></p-button>
+        class="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400"
+        >Cancelar</a
+      >
     </div>
   </form>
 </div>

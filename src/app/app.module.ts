@@ -5,14 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-import { TableModule } from 'primeng/table';
-import { ButtonModule } from 'primeng/button';
-import { DropdownModule } from 'primeng/dropdown';
-import { CalendarModule } from 'primeng/calendar';
-import { PanelModule } from 'primeng/panel';
-import { MenubarModule } from 'primeng/menubar';
-import { ProgressSpinnerModule } from 'primeng/progressspinner';
-
 import { AppComponent } from './app.component';
 import { ReservationListComponent } from './components/reservation-list/reservation-list.component';
 import { ReservationFormComponent } from './components/reservation-form/reservation-form.component';
@@ -32,13 +24,6 @@ import { routes } from './app.routes';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    TableModule,
-    ButtonModule,
-    DropdownModule,
-    CalendarModule,
-    PanelModule,
-    MenubarModule,
-    ProgressSpinnerModule,
   ],
   providers: [],
 })

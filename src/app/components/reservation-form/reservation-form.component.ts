@@ -71,10 +71,13 @@ export class ReservationFormComponent implements OnInit {
   loadReservation(id: number): void {
     this.apiService.getReservation(id).subscribe(
       (reservation) => {
+        const reservationDate = new Date(reservation.reservationTime);
+        const formattedDate = reservationDate.toISOString().slice(0, 16);
+
         this.reservationForm.patchValue({
           customerId: reservation.customer.id,
           serviceId: reservation.service.id,
-          dateTime: new Date(reservation.reservationTime),
+          dateTime: formattedDate,
         });
       },
       (error) => {

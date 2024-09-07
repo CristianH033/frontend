@@ -28,16 +28,24 @@
         <td>{{ reservation.service.name }}</td>
         <td>{{ reservation.reservationTime | date : "dd/MM/yyyy HH:mm" }}</td>
         <td>{{ reservation.status }}</td>
-        <td>
+        <td class="flex flex-wrap gap-2">
+          <p-button
+            icon="pi pi-eye"
+            styleClass="p-button p-button-info p-mr-2"
+            [routerLink]="['/reservations', reservation.id]"
+            pTooltip="Ver detalles"
+          ></p-button>
           <p-button
             icon="pi pi-pencil"
             styleClass="p-button p-button-success p-mr-2"
             [routerLink]="['/reservations/edit', reservation.id]"
+            pTooltip="Editar"
           ></p-button>
           <p-button
             icon="pi pi-trash"
             styleClass="p-button p-button-danger"
             (click)="cancelReservation(reservation.id)"
+            pTooltip="Cancelar"
           ></p-button>
         </td>
       </tr>

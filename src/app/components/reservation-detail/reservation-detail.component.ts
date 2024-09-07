@@ -4,6 +4,7 @@ import { ApiService } from '../../services/api.service';
 import { Reservation } from '../../models/reservation.model';
 import { Customer } from '../../models/customer.model';
 import { Service } from '../../models/service.model';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-reservation-detail',
@@ -25,16 +26,18 @@ export class ReservationDetailComponent implements OnInit {
   }
 
   loadReservation(id: number): void {
-    this.apiService.getReservation(id).subscribe(
-      (reservation) => {
-        this.reservation = reservation;
-        this.loadCustomer(reservation.id);
-        this.loadService(reservation.id);
-      },
-      (error) => {
-        console.error('Error al cargar la reserva', error);
-      }
-    );
+    this.apiService
+      .getReservation(id)
+      .pipe(
+        tap((reservation) => {
+          this.reservation = reservation;
+          this.loadCustomer(reservation.id);
+          this.loadService(reservation.id);
+        })
+      )
+      .subscribe({
+        error: (error) => console.error('Error al cargar la reserva', error),
+      });
   }
 
   loadCustomer(id: number): void {
